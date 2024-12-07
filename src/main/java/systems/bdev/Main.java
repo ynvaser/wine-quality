@@ -11,22 +11,25 @@ public class Main {
     private static final String RED_WINE_URL = "https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv";
     private static final String WHITE_WINE_URL = "https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv";
 
-    private static final double TRAIN_SET_PROPORTION = 0.8;
+    private static final double TRAIN_SET_PROPORTION = 0.9;
     private static final int CLASS_INDEX = 11;
-    private static final double LEARNING_RATE = 0.3;
+    private static final double LEARNING_RATE = 0.25;
     private static final double MOMENTUM = 0.2;
     private static final int TRAINING_TIME = 10000;
-    private static final String HIDDEN_LAYERS_CONFIG = "a";
+    private static final String HIDDEN_LAYERS_CONFIG = "5";
 
     public static void main(String[] args) {
-        log.info("Results on red wine dataset:\n{}", runModel(loadData(RED_WINE_URL)));
-        log.info("Results on white wine dataset:\n{}", runModel(loadData(WHITE_WINE_URL)));
+        Instances redWineData = loadData(RED_WINE_URL);
+        redWineData.setClassIndex(CLASS_INDEX);
+        log.info("Results on red wine dataset:\n{}", runModel(redWineData));
+        Instances whiteWineData = loadData(WHITE_WINE_URL);
+        whiteWineData.setClassIndex(CLASS_INDEX);
+        log.info("Results on white wine dataset:\n{}", runModel(whiteWineData));
     }
 
     private static Results runModel(Instances data) {
         try {
             Results results = new Results();
-            data.setClassIndex(CLASS_INDEX);
 
             int trainSize = (int) Math.round(data.numInstances() * TRAIN_SET_PROPORTION);
             int testSize = data.numInstances() - trainSize;

@@ -16,12 +16,12 @@ public class Results {
         rows.add(new Row(instance, actual, prediction));
     }
 
-    public long getTotalCorrectPredictions() {
+    public long getCorrectPredictions() {
         return rows.stream().filter(Row::doesMatch).count();
     }
 
     public double getAccuracy() {
-        return getTotalCorrectPredictions() / (double) rows.size() * 100;
+        return getCorrectPredictions() / (double) rows.size() * 100;
     }
 
     @Override
@@ -31,8 +31,11 @@ public class Results {
             sb.append(row.toString());
             sb.append(LINE_BREAK);
         }
-        sb.append("Total Correct Predictions: ");
-        sb.append(getTotalCorrectPredictions());
+        sb.append("Correct Predictions: ");
+        sb.append(getCorrectPredictions());
+        sb.append(LINE_BREAK);
+        sb.append("Total Predictions: ");
+        sb.append(rows.size());
         sb.append(LINE_BREAK);
         sb.append("Accuracy: ");
         sb.append(getAccuracy());
