@@ -1,8 +1,11 @@
 # Example outputs
 
 All outputs were created using the committed configs.
-```
 ## Red wine
+<details>
+<summary>Logs</summary>
+
+```
 14:55:24.017 [main] INFO  systems.bdev.Main - Results on red wine dataset:
 Instance 0: Actual = 5.00, Predicted = 4.70, Match = true
 Instance 1: Actual = 5.00, Predicted = 5.21, Match = true
@@ -168,7 +171,13 @@ Total Correct Predictions: 80
 Accuracy: 50.0%
 ```
 
+</details>
+
 ## White wine
+
+<details>
+<summary>Logs</summary>
+
 ```
 14:55:56.936 [main] INFO  systems.bdev.Main - Results on white wine dataset:
 Instance 0: Actual = 5.00, Predicted = 6.01, Match = false
@@ -664,3 +673,4 @@ Instance 489: Actual = 6.00, Predicted = 6.21, Match = true
 Total Correct Predictions: 223
 Accuracy: 45.51020408163266%
 ```
+</details>
